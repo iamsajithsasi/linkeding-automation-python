@@ -1,12 +1,28 @@
+import time
+from selenium import webdriver
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+import pandas as pd
+# import xlrd
+
+# get current page links
+clientList = []
+
 condition = True
+
+# loop
 while condition:
-    link = [1, 2, 3]
-    index = 1
-    for el in link:
-        print(link)
     try:
-        print('Try block')
-        condition = False
+        print("try Block")
+        df = pd.read_excel (r'./client.xls')
+        clientList = df['Clients'].tolist()
+        # condition = False
     except:
-        print('Except block')
+        print("except Block")
         condition = False
+    finally:
+        print("final block")
+
+# driver.quit()
