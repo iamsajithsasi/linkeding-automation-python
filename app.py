@@ -52,8 +52,10 @@ while condition:
         connectBtn = profileBox.find_element_by_class_name(CONNECTBTN)
         disabled = True if connectBtn.get_attribute("disabled") else False
         if not disabled:
-            checkText = connectBtn.find_element_by_class_name('artdeco-button__text').text
-            if checkText == 'Connect':
+            checkText = connectBtn.find('artdeco-button__text').text
+            checkTextAvail = True if checkText else False
+            print(checkTextAvail)
+            if checkTextAvail and checkText == 'Connect':
                 connectBtn.click()
                 modalBox = driver.find_element_by_id(CONNECTMODAL)
                 opennoteBtn = modalBox.find_element_by_class_name(NOTEBUTTON)
@@ -77,7 +79,7 @@ while condition:
                         closeBtn.click()
                 else:
                     closeBtn.click()
-                # end of block
+            # end of block
         else:
             print("skipped")
     try:
